@@ -1,0 +1,1083 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  list-style: none;
+}
+
+body {
+  color: #fff;
+  line-height: 1.5;
+  font-weight: 400;
+  overflow-x: hidden !important;
+  font-family: "Poppins", sans-serif;
+}
+
+/* General Styling for Heading */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #fff;
+  opacity: 0; /* Initially hidden */
+  animation: fadeIn 2s ease-in-out forwards; /* Apply fade-in animation */
+}
+
+/* Animation definition */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px); /* Starts slightly above the original position */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Ends in the final position */
+  }
+}
+
+/* General Layout for Admin */
+.admin-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden; /* Prevents double scrollbar */
+}
+
+/* Background Container */
+.background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(./assets/001.jpg) no-repeat center center/cover;
+  z-index: 0;
+  background-size: cover;
+  background-position: center center;
+  filter: blur(5px); /* Optional: To give a blurred background effect */
+}
+
+/* Overlay */
+.overlay {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+/* Admin Content */
+.admin-content {
+  z-index: 2;
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  min-height: 100vh;
+  padding: 20px;
+  margin-top: 50px;
+  overflow-y: auto;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out; /* Smooth content transition */
+  color: #fff; /* Ensures text is white for visibility */
+}
+
+/* Login Page Styling (Overlay Front of Background) */
+.login-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3; /* Ensures it's above the background and overlay */
+}
+
+.login-page .login-box {
+  background-color: transparent; /* Semi-transparent white background */
+  padding: 50px;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0px 10px rgb(255, 255, 255);
+  width: 500px;
+  text-align: center;
+  z-index: 4; /* Higher z-index than overlay */
+}
+
+/* Admin Sidebar */
+.admin-sidebar {
+  position: fixed;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background-color: transparent; /* Dark background for sidebar */
+  box-shadow: 2px 0 10px #f1efef;
+  color: #fff;
+  padding-top: 100px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.admin-sidebar.collapsed {
+  width: 80px; /* Collapsed sidebar */
+}
+
+.sidebar-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: -160px;
+  margin-left: -100px;
+  margin-bottom: 30px;
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.sidebar-links {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: -80px;
+}
+
+.sidebar-links li {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.dropdown {
+  position: relative; 
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: -10px;
+  color: #fff;
+  margin-left: 10px;
+  list-style: none;
+  border-radius: 5px;
+  display: none; 
+  z-index: 1000;
+}
+
+.dropdown-menu li {
+  padding: 10px 20px;
+}
+
+.dropdown-menu li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+  color: #e24b0f; 
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown-menu.open {
+  display: block;
+}
+
+.admin-sidebar.collapsed .dropdown-menu {
+  left: calc(100% + 10px); 
+  top: 0;
+  width: 150px; 
+}
+
+.admin-sidebar.collapsed .sidebar-links li {
+  justify-content: center;
+}
+
+.admin-sidebar.collapsed .sidebar-links li a span {
+  display: none;
+}
+
+.admin-sidebar.collapsed .logo {
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .admin-sidebar {
+    position: relative;
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    position: static; 
+    box-shadow: none;
+  }
+
+  .sidebar-header {
+    padding: 10px;
+  }
+
+  .sidebar-links {
+    margin-top: 0;
+  }
+
+  .sidebar-links li {
+    padding: 10px 15px;
+  }
+
+  .admin-sidebar.collapsed .sidebar-links {
+    display: none; 
+  }
+}
+
+.sidebar-links li a {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  width: 100%;
+}
+
+.sidebar-links li a:hover {
+  color: #e24b0f;
+}
+
+.sidebar-links li a span {
+  margin-left: 10px;
+  font-size: 18px;
+  display: inline-block;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-links li a:hover span {
+  opacity: 0.8;
+}
+
+/* Navbar Styles */
+.admin-navbar {
+  position: fixed;
+  z-index: 3;
+  background-color: #000;
+  color: white;
+  margin-top: -70px;
+  height: 60px;
+  width: 79%;
+  padding: 10px 20px;
+  box-shadow: 0 2px 8px rgb(243, 241, 241);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.admin-navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.navbar-left,
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-left li,
+.navbar-right li {
+  margin-right: 20px;
+}
+
+.navbar-left a,
+.navbar-right a {
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-left a:hover,
+.navbar-right a:hover {
+  color: #e24b0f; /* Hover color */
+}
+
+.navbar-right li:last-child {
+  margin-right: 0;
+}
+
+.admin-navbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, rgba(255, 165, 97, 1) 0%, rgba(255, 99, 71, 1) 100%);
+  z-index: -1;
+}
+/* Style for the dropdown menu */
+
+.navbar-right div:hover .dropdown-menu {
+  display: block;
+}
+
+/* Additional styling for dropdown items */
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .admin-layout {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    width: 100%;
+    height: auto;
+    display: none; /* Sidebar can be toggled on mobile */
+  }
+
+  .admin-content {
+    margin-left: 0;
+  }
+
+  .admin-navbar {
+    padding: 15px;
+  }
+
+  .navbar-left, .navbar-right {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar-left li,
+  .navbar-right li {
+    margin: 5px 0;
+  }
+}
+
+/* Estimate Table */
+.estimate-table {
+  width: 100%;
+  color: #fff; /* White text for better contrast */
+  max-width: 100%; /* Ensure the table doesn't overflow */
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.979); /* Soft shadow to elevate the table */
+  border-radius: 12px; /* Rounded corners */
+  overflow: hidden; /* Prevents content from overflowing rounded corners */
+}
+
+.estimate-table th,
+.estimate-table td {
+  padding: 10px 20px; /* Adequate padding for better readability */
+  text-align: left;
+  border: 1px solid hsl(0, 0%, 71%); /* Light gray border between rows */
+  font-size: 16px; /* Adjust font size for readability */
+}
+
+.estimate-table th {
+  background-color: transparent;
+  width: 100px; /* A deeper blue background for the header */
+  color: #fff; /* White text for better contrast */
+  font-weight: bold;
+  letter-spacing: 1px; /* Space between header letters */
+}
+
+.estimate-table td {
+  background-color: transparent; /* Dark text for contrast */
+}
+
+.estimate-table tr:nth-child(even) {
+  background-color: transparent;}
+
+.estimate-table tr:nth-child(odd) {
+  background-color: transparent;}
+
+.estimate-table tr:hover {
+  background-color: transparent;}
+
+.estimate-table th:hover,
+.estimate-table td:hover {
+  background-color: #e24b0f; /* Warm yellow background on hover */
+  color: #fff; /* White text on hover */
+  cursor: pointer;
+}
+
+.estimate-table td:first-child,
+.estimate-table th:first-child {
+  padding-left: 15px; /* Adds space to the left for the first cell */
+}
+
+.estimate-table td:last-child,
+.estimate-table th:last-child {
+  padding-right: 15px; /* Adds space to the right for the last cell */
+}
+
+.estimate-table th,
+.estimate-table td {
+  font-family: 'Roboto', sans-serif; /* Modern font for clarity */
+}
+
+.estimate-table td {
+  font-size: 13px; /* Slightly smaller font for better readability */
+}
+
+/* General Container */
+.notifications-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  gap: 20px; /* Add spacing between columns */
+  justify-content: space-between;
+}
+
+.notification-column {
+  width: 30%; /* Adjust column width */
+  background-color: transparent; /* Optional: Add a light background */
+  border: 1px solid #e0e0e0; /* Optional: Add a border for separation */
+  border-radius: 8px; /* Rounded corners */
+  padding: 15px; /* Inner padding for better spacing */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+.notification-column h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.notification-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notification-item {
+  margin-bottom: 10px;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0; /* Add a border for definition */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+}
+
+.notification-item.unread {
+  background-color: transparent; /* Slightly tinted background */
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
+}
+
+.notification-item.read {
+  background-color: transparent;
+  color: #999; /* Lighter text for read notifications */
+}
+
+.notification-item:hover {
+  background-color: #e24b0f;
+  color: #fff; /* White text on hover */
+  transform: scale(1.02); /* Slight zoom effect */
+}
+
+.notification-count {
+  font-weight: bold;
+  color: #e24b0f;
+}
+
+/* Dashboard Container */
+
+.dashboard-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: transparent;
+}
+
+/* Dashboard Title */
+.dashboard-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+/* Dashboard Summary */
+.dashboard-summary {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.dashboard-summary h2 {
+  font-size: 1.8rem;
+  color: #e24b0f;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+/* Summary Cards Container */
+.summary-cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+/* Individual Summary Card */
+.summary-card {
+  background: transparent; /* Gradient Background */
+  padding: 30px;
+  border-radius: 50%; /* Make it circular */
+  box-shadow: 0 10px 30px rgb(255, 254, 254);
+  text-align: center;
+  width: 200px; /* Width and height are equal to form a circle */
+  height: 200px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease, background 0.3s ease;
+  position: relative;
+  color: white;
+  overflow: hidden;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Hover Effects */
+.summary-card:hover {
+  box-shadow: 0 10px 30px rgb(255, 254, 254);
+  transform: translateY(-10px);
+  background: linear-gradient(135deg, #e24b0f, #e24b0f); /* Reverse Gradient */
+}
+
+/* Heading */
+.summary-card h3 {
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Number / Count */
+.summary-card p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+/* Change text color on hover */
+.summary-card:hover p {
+  color: #000; /* Gold color */
+}
+
+/* Add subtle icon animation */
+.summary-card .icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.summary-card:hover .icon {
+  transform: scale(1.1); /* Icon grows slightly on hover */
+}
+
+/* Animation - Pop-in effect for the summary cards */
+.summary-card:nth-child(odd) {
+  animation: popIn 0.5s ease-in-out;
+}
+
+.summary-card:nth-child(even) {
+  animation: popIn 0.7s ease-in-out;
+}
+
+/* Keyframe Animation for Pop-in Effect */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .summary-card {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 25px;
+  }
+
+  .summary-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .summary-card p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .summary-card {
+    width: 130px;
+    height: 130px;
+  }
+
+  .summary-card h3 {
+    font-size: 1rem;
+  }
+
+  .summary-card p {
+    font-size: 1.2rem;
+  }
+}
+
+.button-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.switch-button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0px 10px rgb(255, 255, 255);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.switch-button:hover {
+  background-color: #e24b0f; /* Warm yellow background on hover */
+}
+
+.form-section {
+  display: block;
+  margin-bottom: 30px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.data-table th, .data-table td {
+  padding: 12px;
+  text-align: left;
+  box-shadow: 0 0px 10px rgb(255, 255, 255);
+  border-bottom: 1px solid #ddd;
+}
+
+.data-table th {
+  background-color: transparent;
+  color: white;
+  box-shadow: 0 0px 10px rgb(255, 255, 255);
+
+}
+
+.data-table th:hover,
+.data-table td:hover {
+  background-color: #e24b0f; /* Warm yellow background on hover */
+  color: #fff; /* White text on hover */
+  cursor: pointer;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  /* Form Container */
+  .form-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  /* Heading */
+  h1 {
+    font-size: 20px;
+  }
+
+  /* Button Container */
+  .button-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .switch-button {
+    margin: 10px 5px;
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  /* Data Table */
+  .data-table th, .data-table td {
+    padding: 8px;
+  }
+
+  /* Form Section */
+  .form-section {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Form Container */
+  .form-container {
+    width: 95%;
+    padding: 10px;
+  }
+
+  /* Heading */
+  h1 {
+    font-size: 18px;
+  }
+
+  /* Button Container */
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .switch-button {
+    margin: 5px 0;
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  /* Data Table */
+  .data-table th, .data-table td {
+    padding: 6px;
+  }
+}
+/* General Styles */
+.banner-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: transparent;
+  box-shadow: 0 0px 10px rgb(255, 255, 255);
+  border-radius: 8px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Form Styling */
+.banner-form {
+  display: flex;
+  
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  box-shadow: 0 0px 10px rgb(255, 255, 255);
+  border-radius: 5px;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .banner-container {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 8px;
+    font-size: 1rem;
+  }
+
+  .submit-btn {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-container {
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 6px;
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+}
+/* General Wrapper */
+
+.container {
+  display: flex;
+  flex-direction: row; /* Arrange items in a row */
+  justify-content: space-between; /* Add space between form and table */
+  align-items: flex-start; /* Align items at the top */
+  padding: 20px;
+}
+
+.form-container
+ {
+  flex: 1; /* Allow both form and table to grow equally */
+  max-width: 40%;
+  margin-left: -20px; /* Ensure form and table occupy equal width */
+  box-sizing: border-box;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0px 5px 20px rgb(245, 243, 243); 
+  width: 80%;
+  padding: 20px;
+  color: #fff;
+  border-radius: 8px;
+  background-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack form and table vertically on smaller screens */
+    align-items: center; /* Center items horizontally */
+  }
+
+  .form-container,
+  .user-table-container {
+    max-width: 100%; /* Full width on smaller screens */
+  }
+}
+
+/* Form Container */
+
+/* Title */
+.form-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+  color: #fff;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 5px;
+  background: #f9f9f9;
+}
+
+/* Submit Button */
+.button-container {
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+
+.btn-submit {
+  width: 8rem; 
+  height: 40px;
+  color: #fff;
+  background-color: transparent;
+  font-family: "Teko", sans-serif;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  font-size: 18px; /* Adjust for readability */
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  margin: 5px; /* Add some spacing around buttons */
+}
+
+.btn-edit,
+.btn-delete{
+  width: 4rem; /* Slightly larger width */
+  height: 35px;
+  color: #fff;
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  font-size: 18px; /* Adjust for readability */
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  margin: 5px; /* Add some spacing around buttons */
+}
+.export-button{
+  width: 8rem;
+  height: 35px;
+  color: #fff;
+  background-color: #e24b0f;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  font-size: 18px; 
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  margin: 5px; 
+}
+.btn-edit:hover,
+.btn-delete:hover,
+.btn-submit:hover,
+.export-button:hover {
+  background-color: white;
+  color: #e24b0f;
+}
+.unauthorized-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.user-table-container {
+  flex: 1; /* Allow both form and table to grow equally */
+  max-width: 56%; /* Ensure form and table occupy equal width */
+  box-sizing: border-box; 
+  margin-top: 20px;
+  margin-right: 10px;
+  box-shadow: 0 2px 8px #fffcfc; /* Subtle shadow */
+  padding: 10px; /* Optional padding for some space inside */
+  background-color: #1e1e1e; /* Optional: Add background color */
+}
+
+.table-title {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff; /* Darker text color */
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-table th,
+.user-table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd; /* Subtle border */
+}
+
+.user-table th {
+  background-color: #e24b0f; /* Header background */
+  color: #fff; /* White text */
+  font-weight: bold;
+}
+
+.user-table tr:nth-child(even) {
+  background-color: transparent;
+  border-bottom: 1px solid #ddd; /* Subtle border */
+  /* Alternating row color */
+}
+
+.user-table td {
+  color: #fff; /* Slightly muted text for content */
+}
+
+.user-table th:first-child,
+.user-table td:first-child {
+  border-top-left-radius: 8px; /* Rounded corners */
+  border-bottom-left-radius: 8px;
+}
+
+.user-table th:last-child,
+.user-table td:last-child {
+  border-top-right-radius: 8px; /* Rounded corners */
+  border-bottom-right-radius: 8px;
+}
+
+.user-table-containers {
+  flex: 1; /* Allow both form and table to grow equally */
+  max-width: 56%; /* Ensure form and table occupy equal width */
+  box-sizing: border-box; 
+  margin-top: -730px;
+  margin-left: 450px;
+  padding: 10px; /* Optional padding for some space inside */
+}
+.user-table-containe{
+  flex: 1; 
+  max-width: 56%; /* Ensure form and table occupy equal width */
+  box-sizing: border-box; 
+  margin-top: -330px;
+  margin-left: 450px;
+  padding: 10px;
+}
