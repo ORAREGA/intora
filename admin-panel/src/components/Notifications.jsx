@@ -26,7 +26,7 @@ const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    const socket = io("http://localhost:5000"); // Replace with your backend URL
+    const socket = io("http://147.93.107.225:5000"); // Replace with your backend URL
 
     // Listen for incoming notifications
     socket.on("new-notification", (data) => {
@@ -34,7 +34,7 @@ const Notifications = () => {
     });
 
     // Fetch existing notifications on component mount
-    fetch("http://localhost:5000/notifications")
+    fetch("http://147.93.107.225:5000/notifications")
       .then((response) => response.json())
       .then((data) => setNotifications(data))
       .catch((error) => console.error("Error fetching notifications:", error));
