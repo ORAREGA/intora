@@ -8,24 +8,46 @@ const mongoose = require("mongoose");
 const http = require("http");
 const { Server } = require("socket.io");
 require('dotenv').config(); 
+const https = require("https");
+
 
 const app = express();
 const server = http.createServer(app);
+const server = https.createServer(sslOptions, app);
+app.use(cors({
+  origin: [
+    "http://intora.in", "https://intora.in", 
+    "http://admin.intora.in", "https://admin.intora.in"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,  // Enable credentials if necessary
+}));
+
+// Socket.io setup
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: [
+      "http://intora.in", "https://intora.in",  // Allow both http and https for intora.in
+      "http://admin.intora.in", "https://admin.intora.in"  // Allow both http and https for admin.intora.in
+    ],
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+    credentials: true,  // Allow cookies/authentication tokens
   },
 });
-
-
-// Middleware setup
-app.use(cors({
-  origin: "*",  // Allow all origins (for testing)
-  methods: ["GET", "POST", "PUT", "DELETE"]
-}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// Multer setup for file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "uploads"));
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
 
 // MongoDB connection
 const PORT = process.env.PORT || 80;
@@ -39,12 +61,7 @@ mongoose.connect(process.env.DATABASE, {
 .then(() => console.log("✅ MongoDB connected successfully"))
 .catch(err => console.error("❌ MongoDB connection error:", err));
 
-// Multer setup for file uploads
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "uploads/"),
-  filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname)),
-});
-const upload = multer({ storage });
+
 
 const estimateSchema = new mongoose.Schema({
   name: String,
