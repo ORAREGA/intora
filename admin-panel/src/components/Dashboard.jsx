@@ -10,8 +10,8 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchCounts = async () => {
       try {
-        const estimateResponse = await axios.get('http://localhost:5000/get-estimates');
-        const consultationResponse = await axios.get('http://localhost:5000/get-consultations');
+        const estimateResponse = await axios.get('http://147.93.107.225:5000/get-estimates');
+        const consultationResponse = await axios.get('http://147.93.107.225:5000/get-consultations');
 
         setDashboardData({
           estimateCount: estimateResponse.data.length,
