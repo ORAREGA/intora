@@ -189,7 +189,7 @@ const Balconies = () => {
             <React.Fragment key={index}>
               <motion.div whileHover={{ scale: 1.05 }} className="kitchen-card">
                 <img
-                  src={`http://localhost:5000${design.img}`}
+                  src={`http://147.93.107.225:5000${design.img}`}
                   alt={`Modular Kitchen Design ${index + 1}`}
                   className="kitchen-image"
                   onClick={() =>
