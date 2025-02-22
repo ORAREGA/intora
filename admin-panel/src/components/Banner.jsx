@@ -21,7 +21,7 @@ const Banner = () => {
 
   const fetchBanners = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/slides");
+      const response = await axios.get("http://147.93.107.225:5000/slides");
       setBanners(response.data);
     } catch (error) {
       console.error("Error fetching banners:", error);
@@ -74,7 +74,7 @@ const Banner = () => {
           alert("Banner updated successfully!");
         } else {
           // If not editing, create a new banner
-          await axios.post("http://localhost:5000/slides", formDataWithImage);
+          await axios.post("http://147.93.107.225:5000/slides", formDataWithImage);
           alert("Banner added successfully!");
         }
 
