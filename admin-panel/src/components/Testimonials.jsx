@@ -19,7 +19,7 @@ const Testimonials = () => {
 
   const fetchTestimonials = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/testimonials');
+      const response = await axios.get('http://147.93.107.225:5000/api/testimonials');
       setTestimonials(response.data);
     } catch (error) {
       console.error("Error fetching testimonials:", error);
@@ -50,12 +50,12 @@ const Testimonials = () => {
       try {
         if (editingTestimonial && editingTestimonial._id) {
           await axios.put(
-            `http://localhost:5000/api/testimonials/${editingTestimonial._id}`,
+            `http://147.93.107.225:5000/api/testimonials/${editingTestimonial._id}`,
             formDataWithImage
           );
           alert("Testimonial updated successfully!");
         } else {
-          await axios.post("http://localhost:5000/api/testimonials", formDataWithImage);
+          await axios.post("http://147.93.107.225:5000/api/testimonials", formDataWithImage);
           alert("Testimonial added successfully!");
         }
 
@@ -80,7 +80,7 @@ const Testimonials = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this testimonial?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/testimonials/${id}`);
+        await axios.delete(`http://147.93.107.225:5000/api/testimonials/${id}`);
         alert("Testimonial deleted successfully!");
         fetchTestimonials();
       } catch (error) {
