@@ -15,7 +15,7 @@ const Header = () => {
   useEffect(() => {
     const fetchSlides = async () => {
       try {
-        const response = await fetch("http://localhost:5000/slides");
+        const response = await fetch("http://147.93.107.225:5000/slides");
         console.log("Response status:", response.status);
   
         if (!response.ok) {
@@ -139,7 +139,7 @@ const Header = () => {
                   key={index}
                   className="slide"
                   style={{
-                    backgroundImage: `url(http://localhost:5000${slide.background})`,
+                    backgroundImage: `url(http://147.93.107.225:5000${slide.background})`,
                   }}
                 >
                   <div
