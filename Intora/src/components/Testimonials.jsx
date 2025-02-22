@@ -11,7 +11,7 @@ const Testimonials = () => {
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const response = await fetch("http://147.93.107.225:5000/api/testimonials");
+        const response = await fetch("http://localhost:5000/api/testimonials");
         const data = await response.json();
         setTestimonials(data);
       } catch (error) {
@@ -83,7 +83,7 @@ const Testimonials = () => {
                   <div className="info">
                     <div className="author">
                       <img
-                        src={`http://147.93.107.225:5000${testimonial.image}`}
+                        src={`http://localhost:5000${testimonial.image}`}
                         alt={testimonial.name}
                         onError={() =>
                           console.log(
