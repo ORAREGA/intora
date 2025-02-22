@@ -68,7 +68,7 @@ const Banner = () => {
         if (editingBanner && editingBanner._id) {
           // If editing, update the banner
           const updatedBanner = await axios.put(
-            `http://localhost:5000/slides/${editingBanner._id}`,
+            `http://147.93.107.225:5000/slides/${editingBanner._id}`,
             formDataWithImage
           );
           alert("Banner updated successfully!");
@@ -106,7 +106,7 @@ const Banner = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this image?")) {
       try {
-        await axios.delete(`http://localhost:5000/images/${id}`);
+        await axios.delete(`http://147.93.107.225:5000/images/${id}`);
         alert("Banner deleted successfully!");
         fetchImages(); // Refresh the banner list
       } catch (error) {
