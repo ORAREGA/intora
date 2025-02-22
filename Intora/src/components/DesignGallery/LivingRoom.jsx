@@ -23,7 +23,7 @@ const LivingRoom = () => {
   // Fetch Modular Kitchen Designs
   const fetchKitchenDesigns = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/images");
+      const response = await axios.get("http://147.93.107.225:5000/api/images");
       const filteredDesigns = response.data.filter(
         (design) => design.category === "living rooms"
       );
@@ -190,11 +190,11 @@ const LivingRoom = () => {
             <React.Fragment key={index}>
               <motion.div whileHover={{ scale: 1.05 }} className="kitchen-card">
                 <img
-                  src={`http://localhost:5000${design.img}`}
+                  src={`http://147.93.107.225:5000${design.img}`}
                   alt={`Modular Kitchen Design ${index + 1}`}
                   className="kitchen-image"
                   onClick={() =>
-                    openImageModal(`http://localhost:5000${design.img}`)
+                    openImageModal(`http://147.93.107.225:5000${design.img}`)
                   }
                 />
               </motion.div>
