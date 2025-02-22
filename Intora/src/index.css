@@ -1700,13 +1700,17 @@ span:hover {
 
 .slide {
   flex-shrink: 0; /* Prevent slides from shrinking */
-  width: 142%; /* Make each slide take up full width of the container */
+  width: 250%; /* Make each slide take up full width of the container */
   height: 100%; /* Ensure slides take up full height */
   background-size: cover; /* Ensure background covers the entire slide */
   background-position: center; /* Center the background image */
   transition: transform 0.5s ease; /* Smooth transition for sliding effect */
 }
 
+.text{
+  margin-left: 20px;
+  margin-top: 100px;
+}
 /* Media Query for Tablets */
 @media (max-width: 768px) {
   .slider {
@@ -4136,8 +4140,11 @@ textarea:focus {
   }
   .navbar .logo {
     margin-left: -60px;
-    margin-top: -40px;
+    margin-top: -60px;
     width: 60px;
+  }
+  .text{
+    margin-left: -80px;
   }
   .nav-scroll .navbar-collapse .nav-link,
   .light .navbar-collapse .nav-link {
@@ -4366,6 +4373,8 @@ textarea:focus {
   .slider .caption.center h1 br {
     display: none;
   }
+  
+    
   .slider .social-icon {
     left: 15px;
     bottom: 15px;
