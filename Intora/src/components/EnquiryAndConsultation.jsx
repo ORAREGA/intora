@@ -50,7 +50,7 @@ const ConsultationForm = () => {
     }
 
     try {
-      const endpoint = "http://147.93.107.225/book-consultation";
+      const endpoint = "http://147.93.107.225:5000/book-consultation";
       await axios.post(endpoint, formData);
       alert("Consultation Submitted Successfully!");
 
