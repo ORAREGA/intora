@@ -21,7 +21,7 @@ const Design = () => {
 
     try {
       if (isEditing) {
-        await axios.put(`http://localhost:5000/api/images/${editId}`, formData);
+        await axios.put(`http://147.93.107.225:5000/api/images/${editId}`, formData);
         setIsEditing(false);
         setEditId("");
         alert("Image updated successfully!");
@@ -38,7 +38,7 @@ const Design = () => {
 
   const fetchUploadedData = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/images");
+      const response = await axios.get("http://147.93.107.225:5000/api/images");
       setUploadedData(response.data); // Update the state with the new list
     } catch (error) {
       console.error("Error fetching images:", error);
