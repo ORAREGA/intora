@@ -247,7 +247,7 @@ const Banner = () => {
                 <td>{index + 1}</td>
                 <td>
                   <img
-                    src={`http://localhost:5000${banner.background}`}
+                    src={`http://147.93.107.225:5000${banner.background}`}
                     alt="Banner"
                     style={{ width: "100px", height: "50px" }}
                   />
