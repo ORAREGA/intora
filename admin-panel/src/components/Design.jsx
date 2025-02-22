@@ -26,7 +26,7 @@ const Design = () => {
         setEditId("");
         alert("Image updated successfully!");
       } else {
-        await axios.post("http://localhost:5000/api/images", formData);
+        await axios.post("http://147.93.107.225:5000/api/images", formData);
         alert("Image uploaded successfully!");
       }
       fetchUploadedData();
@@ -59,7 +59,7 @@ const Design = () => {
   const handleDelete = async (id) => {
     try {
       // Corrected the API path to match your backend route
-      await axios.delete(`http://localhost:5000/api/images/${id}`);
+      await axios.delete(`http://147.93.107.225:5000/api/images/${id}`);
       alert("Image deleted successfully!");
       fetchUploadedData(); // Refresh the image list
     } catch (error) {
