@@ -10,7 +10,7 @@ const Login = () => {
   const location = useLocation();
 
   // Default admin credentials
-  const defaultAdminEmail = "intora@gmail.com";
+  const defaultAdminEmail = "intora@intora.in";
   const defaultAdminPassword = "Intora@1500";
 
   const handleLogin = (e) => {
