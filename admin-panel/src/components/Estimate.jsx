@@ -11,7 +11,7 @@ const Estimate = () => {
   useEffect(() => {
     const fetchEstimates = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/get-estimates');
+        const response = await axios.get('http://147.93.107.225:5000/get-estimates');
         setEstimates(response.data); // Save the fetched data
         setLoading(false);
       } catch (err) {
