@@ -10,7 +10,7 @@ const FormSwitcher = () => {
   const fetchConsultations = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/get-consultations"
+        "http://147.93.107.225:5000/get-consultations"
       );
       setConsultationData(response.data);
     } catch (error) {
