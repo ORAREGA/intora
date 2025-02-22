@@ -22,7 +22,7 @@ const Navbar = () => {
 
   useEffect(() => {
     // Connect to the socket server
-    const socket = io("http://localhost:5000"); // Replace with your backend URL
+    const socket = io("http://147.93.107.225:5000"); // Replace with your backend URL
 
     // Listen for new notifications
     socket.on("new-notification", () => {
