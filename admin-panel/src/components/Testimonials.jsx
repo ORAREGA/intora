@@ -187,7 +187,7 @@ const Testimonials = () => {
                 <td>{index + 1}</td>
                 <td>
                   <img
-                    src={`http://localhost:5000${testimonial.image}`}
+                    src={`http://147.93.107.225:5000${testimonial.image}`}
                     alt="Testimonial"
                     style={{ width: "100px", height: "100px" }}
                   />
