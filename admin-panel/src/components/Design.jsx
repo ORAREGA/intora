@@ -116,7 +116,7 @@ const Design = () => {
                 <td>{item.category}</td>
                 <td>
                   <img
-                    src={`http://localhost:5000${item.img}`}
+                    src={`http://147.93.107.225:5000${item.img}`}
                     alt="Uploaded"
                     style={{ width: "100px", height: "auto" }}
                   />
