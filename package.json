@@ -15,4 +15,7 @@
     "dotenv": "^16.4.7",
     "react": "^19.0.0"
   }
+  "devDependencies": {
+  "concurrently": "^9.2.1"
+}
 }
